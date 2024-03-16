@@ -4,7 +4,26 @@ public class Main {
     
 
 
-        Viết mã của bạn vào đây
+        Thread sumThread = new Thread(() -> {
+            int sum = 0;
+            for (int num : numbers) {
+                sum += num;
+            }
+            System.out.println("Tổng của các phần tử trong mảng: " + sum);
+        });
+
+        Thread maxThread = new Thread(() -> {
+            int max = numbers[0];
+            for (int i = 1; i < numbers.length; i++) {
+                if (numbers[i] > max) {
+                    max = numbers[i];
+                }
+            }
+            System.out.println("Phần tử lớn nhất trong mảng: " + max);
+        });
+
+        sumThread.start();
+        maxThread.start();
     
     }
 }
